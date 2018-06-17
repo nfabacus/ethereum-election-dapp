@@ -1,11 +1,12 @@
-pragma solidity 0.4.23;
+pragma solidity 0.4.24;
 
 contract Election {
+    
     // Model a Candidate
     struct Candidate {
-        uinit id;
+        uint id;
         string name;
-        uinit voteCount;
+        uint voteCount;
     }
     // Store Candidates
     // Fetch Candidate
