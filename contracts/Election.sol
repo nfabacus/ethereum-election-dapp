@@ -1,11 +1,31 @@
-pragma solidity ^0.4.2;
+pragma solidity 0.4.23;
 
 contract Election {
-    // Store candidate
-    // Read candidate
-    string public candidate;
-    // Constrcutor
-    function Election () public {
-        candidate = "Candidate 1";
+    // Model a Candidate
+    struct Candidate {
+        uinit id;
+        string name;
+        uinit voteCount;
+    }
+    // Store Candidates
+    // Fetch Candidate
+    mapping(uint => Candidate) public candidates;
+    //mapping here is like associative array. 
+    //key => value (Candidate's structure type)
+
+    // public candidates - solidity will generate candidates function and interact with block chain.
+    
+    // Store Candidates count
+    uint public candidatesCount; //count to add whn adding a new candidate
+
+    constructor() public {
+        addCandidate("Candidate 1");
+        addCandidate("Candidate 2");
+    }
+    
+    function addCandidate (string _name) private {
+        candidatesCount++;
+        candidates[candidatesCount] = Candidate(candidatesCount, _name, 0);
     }
 }
+
